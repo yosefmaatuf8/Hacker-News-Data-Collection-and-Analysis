@@ -50,11 +50,11 @@ with open('top_comments.csv', mode='w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     writer.writerow(['id', 'author', 'text', 'time', 'parent'])
     
-    for story_id in top_stories[:10]:  # Limiting to top 50 stories for this example
+    for story_id in top_stories[:50]:  # Limiting to top 50 stories for this example
         story_details = fetch_story_details(story_id)
         comment_ids = story_details.get('kids', [])
         
-        for comment_id in comment_ids:
+        for comment_id in comment_ids[:5]:
             comment_details = fetch_comment_details(comment_id)
             writer.writerow([
                 comment_details.get('id', ''),
@@ -98,4 +98,12 @@ plt.ylabel('Frequency')
 
 plt.tight_layout()
 plt.savefig('analysis_results.png')
+plt.show()
+
+plt.figure(figsize= (10, 6))
+sns.scatterplot (x='comments_count', y='score', data=stories_df)
+plt.title('Ratio of Score to Number of Comments')
+plt.xlabel('Number of Comments')
+plt.ylabel('Score to Comment Ratio')
+plt.savefig('Ratio of Score to Number of Comments.png')
 plt.show()
