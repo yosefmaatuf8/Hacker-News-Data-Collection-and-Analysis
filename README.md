@@ -1,5 +1,4 @@
 # Hacker-News-Data-Collection-and-Analysis
-# Hacker News Data Collection and Analysis
 
 This project collects data from the Hacker News API, saves it to CSV files, and performs analysis to generate summary statistics and visualizations.
 
