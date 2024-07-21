@@ -12,6 +12,7 @@ def fetch_top_stories():
     response = requests.get(top_stories_url)
     return response.json()
 
+
 # Function to fetch story details
 def fetch_story_details(story_id):
     story_url = f'https://hacker-news.firebaseio.com/v0/item/{story_id}.json'
@@ -100,6 +101,7 @@ plt.tight_layout()
 plt.savefig('analysis_results.png')
 plt.show()
 
+#The ratio between the score and the number of comments
 plt.figure(figsize= (10, 6))
 sns.scatterplot (x='comments_count', y='score', data=stories_df)
 plt.title('Ratio of Score to Number of Comments')
